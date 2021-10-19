@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="renderer.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+  const vnode = h('div', null, [
+    h('h2', {class: 'title'}, '当前计数:0'),
+    h('button', {
+      onClick: function () {
+        console.log(11)
+      }
+    }, '+1')
+  ])
+
+  mount(vnode, document.getElementById('app'))
+
+  setTimeout(() => {
+    const vnode2 = h('div', null, [
+      h('h2',{onClick:function () {console.log(111)}},'111'),
+      h('h2',null,'很好')
+    ])
+    path(vnode, vnode2)
+  }, 2000)
+
+  console.log(vnode)
+</script>
+</body>
+</html>
