@@ -44,20 +44,20 @@ function reactive(raw) {
     get(target, key, receiver) {
       let dep = getdep(target, key)
       dep.depend()
-      return target[key]
+      return Reflect.get(target, key, receiver)// target[key]
     },
-    set(target, key, value) {
+    set(target, key, value, receiver) {
       let dep = getdep(target, key)
-      target[key] = value
+      Reflect.set(target, key, value, receiver)// value
       dep.notify()
     },
   })
 }
 
-let info = reactive({ name: '123' })
+// let info = reactive({ name: '123' })
 
-watchEffect(function () {
-  console.log(info.name)
-})
+// watchEffect(function () {
+//   console.log(info.name)
+// })
 
-info.name = '321'
+// info.name = '321'

@@ -6,6 +6,7 @@ function createApp(app) {
       let oldVnode = null
 
       watchEffect(function () {
+        console.log(11);
         if (!isMounted) {
           console.log(app)
           oldVnode = app.rander()
